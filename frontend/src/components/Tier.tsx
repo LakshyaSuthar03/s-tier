@@ -13,6 +13,8 @@ const Tier: React.FC<ITierListProps> = ({ tierName, tierColor }) => {
     e.preventDefault();
     const widgetType = e.dataTransfer.getData("widgetType"); // Retrieve widgetType
     if (widgetType) {
+      console.log(widgetType);
+
       setItems((prevItems) => [...prevItems, widgetType]);
     }
   };
@@ -24,7 +26,7 @@ const Tier: React.FC<ITierListProps> = ({ tierName, tierColor }) => {
       onDragOver={(e) => e.preventDefault()} // Allow drop
     >
       <textarea
-        className="h-full w-24 resize-none outline-none text-center"
+        className="h-full w-24 resize-none outline-none text-center place-content-center"
         style={{ backgroundColor: tierColor }}
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -35,7 +37,7 @@ const Tier: React.FC<ITierListProps> = ({ tierName, tierColor }) => {
           className="h-24 w-24 text-white"
           style={{ backgroundColor: "grey" }}
         >
-          {widgetType}
+          <img src={widgetType} className="h-full w-full object-cover" alt="" />
         </div>
       ))}
     </div>
